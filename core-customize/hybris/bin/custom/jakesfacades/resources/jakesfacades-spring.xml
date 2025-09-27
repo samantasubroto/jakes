@@ -8,5 +8,10 @@
            http://www.springframework.org/schema/aop
            http://www.springframework.org/schema/aop/spring-aop.xsd">
 
+    <alias name="jakesProductFacade" alias="cwsProductFacade"/>
+    <alias name="jakesProductFacade" alias="productFacade"/>
+    <alias name="jakesProductFacade" alias="cwsProductFacade"/>
+    <bean id="jakesProductFacade" class="com.jakes.jakesfacades.product.impl.DefaultJakesProductFacade" parent="defaultProductFacade">
+    </bean>
 </beans>
 
