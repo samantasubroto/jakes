@@ -24,7 +24,7 @@
 
  Preparing extension
 
-	 will be called in the beginning of the ant call and only once (also when using multiple 
+	 will be called in the beginning of the ant call and only once (also when using multiple
 	 ant targets e.g. ant build yunittest)
 		 <macrodef name="jakesocc_only_once_prepare"/>
 
@@ -40,13 +40,13 @@
 
  JUnit Test
 
-	 before/after ant macro "yunitinit" 
+	 before/after ant macro "yunitinit"
 		 <macrodef name="jakesocc_before_yunitinit" />
 		 <macrodef name="jakesocc_after_yunitinit" />
 
 	 before/after ant macro "yunit"
 		 <macrodef name="jakesocc_before_yunit" />
-		 <macrodef name="jakesocc_after_yunit" /> 
+		 <macrodef name="jakesocc_after_yunit" />
 
  Distribution package
 
@@ -60,10 +60,10 @@
 
 --><project name="jakesocc_buildcallbacks">
     	
-    <!-- 
-		Called whenever 'ant ear' is used. this callback can be used to modify the content of the ear file
+    <!--
+	    Called whenever 'ant ear' is used. this callback can be used to modify the content of the ear file
 
-		${ear.path}: 			path to ear
+	     ${ear.path}: 			path to ear
 	 -->
     	
     <macrodef name="jakesocc_before_ear">
@@ -75,103 +75,5 @@
         </sequential>
         	
     </macrodef>
-    	
-    <!-- <v2-addons> -->
-    	
-    <macrodef name="jakesocc_after_clean">
-        		
-        <sequential>
-            			
-            <if>
-                				
-                <available file="${ext.jakesocc.path}/web/addonsrc" type="dir"/>
-                				
-                <then>
-                    					
-                    <echo message="Deleting addons directories from: ${ext.jakesocc.path}/web/webroot"/>
-                    					
-                    <echo message="Deleting addonsrc directory from: ${ext.jakesocc.path}/web/"/>
-                    					
-                    <echo message="Deleting addons web libs from: ${ext.jakesocc.path}/web/webroot/WEB-INF/lib"/>
-                    					
-                    <delete failonerror="false" includeEmptyDirs="true">
-                        						
-                        <fileset dir="${ext.jakesocc.path}/web/webroot/" includes="**/addons/"/>
-                        						
-                        <fileset dir="${ext.jakesocc.path}/web" includes="**/addonsrc/"/>
-                        						
-                        <fileset dir="${ext.jakesocc.path}/web/webroot/WEB-INF/lib" includes="addon-**.jar"/>
-                        					
-                    </delete>
-                    				
-                </then>
-                			
-            </if>
-            		
-        </sequential>
-        	
-    </macrodef>
-    	
-    <!-- </v2-addons> -->
-    	
-    <macrodef name="jakesocc_after_build">
-        		
-        <sequential>
-            			
-            <echo message="jakesocc_after_build"/>
-            			
-            <containsExact separator=";" string="${extension.names}" substring="addonsupport">
-                				
-                <do>
-                    					
-                    <foreachext>
-                        						
-                        <do>
-                            							
-                            <for delimiter=";" list="${addon.folder}" param="addOnFile">
-                                								
-                                <sequential>
-                                    									
-                                    <if>
-                                        										
-                                        <available file="${ext.@{extname}.path}/acceleratoraddon/@{addOnFile}"/>
-                                        										
-                                        <then>
-                                            											
-                                            <echo message="Found addon:  @{extname}"/>
-                                            											
-                                            <echo message="addOnFile test:  @{addOnFile}"/>
-                                            											
-                                            <copyAddOnToExtension addonextension="@{extname}" addonresource="@{addOnFile}" target="jakesocc"/>
-                                            										
-                                        </then>
-                                        									
-                                    </if>
-                                    								
-                                </sequential>
-                                							
-                            </for>
-                            						
-                        </do>
-                        					
-                    </foreachext>
-                    				
-                </do>
-                			
-            </containsExact>
-            		
-        </sequential>
-        	
-    </macrodef>
-    	
-	
-    <patternset id="extension.jakesocc.production.filter">
-        		
-        <patternset refid="extension.production.filter"/>
-        		
-        <exclude name="web/addonsrc/**"/>
-        	
-    </patternset>
-    	
-
+    
 </project>
