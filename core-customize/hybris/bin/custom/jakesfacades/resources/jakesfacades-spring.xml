@@ -13,5 +13,19 @@
     <alias name="jakesProductFacade" alias="cwsProductFacade"/>
     <bean id="jakesProductFacade" class="com.jakes.jakesfacades.product.impl.DefaultJakesProductFacade" parent="defaultProductFacade">
     </bean>
+
+    <bean id="jakesProductPopulator"
+          class="com.jakes.jakesfacades.product.converters.populators.JakesProductPopulator">
+        <property name="productModelUrlResolver" ref="productModelUrlResolver"/>
+        <property name="productBasicPopulator" ref="productBasicPopulator"/>
+        <property name="variantSelectedPopulator" ref="variantSelectedPopulator"/>
+        <property name="productPrimaryImagePopulator" ref="productPrimaryImagePopulator"/>
+        <property name="b2BCustomerService" ref="b2bCustomerService"/>
+    </bean>
+
+    <bean parent="modifyPopulatorList">
+        <property name="list" ref="productConverter" />
+        <property name="add" ref="jakesProductPopulator"/>
+    </bean>
 </beans>
 

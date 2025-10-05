@@ -12,4 +12,17 @@
 
     <context:component-scan base-package="com.jakes.jakesocc.controllers"/>
 
+    <bean parent="fieldSetLevelMapping">
+        <property name="dtoClass" value="de.hybris.platform.commercewebservicescommons.dto.product.ProductWsDTO"/>
+        <property name="levelMapping">
+            <map>
+                <entry key="BASIC"
+                       value="liked"/>
+                <entry key="DEFAULT"
+                       value="liked"/>
+                <entry key="FULL"
+                       value="liked"/>
+            </map>
+        </property>
+    </bean>
 </beans>

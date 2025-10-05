@@ -7,6 +7,10 @@ import { StoreModule } from "@ngrx/store";
 import { AppRoutingModule } from "@spartacus/storefront";
 import { AppComponent } from './app.component';
 import { SpartacusModule } from './spartacus/spartacus.module';
+import { JakesOccModule } from './occ';
+import { JakesProductIntroModule } from './cms-components';
+import { provideConfig } from '@spartacus/core';
+import { jakesIconConfig } from './config';
 
 @NgModule({
   declarations: [
@@ -19,9 +23,13 @@ import { SpartacusModule } from './spartacus/spartacus.module';
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
     SpartacusModule,
-    JakesParagraphModule
+    JakesParagraphModule,
+    JakesOccModule,
+    JakesProductIntroModule
   ],
-  providers: [],
+  providers: [
+     provideConfig(jakesIconConfig),
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
