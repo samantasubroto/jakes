@@ -2,6 +2,18 @@
 
 <items xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	   xsi:noNamespaceSchemaLocation="items.xsd">
+
+	<relations>
+		<relation code="B2BCustomer2LikedProductRelation" localized="false">
+			<deployment table="B2BCustomer2LikedProdRel" typecode="21000"/>
+			<sourceElement type="B2BCustomer" qualifier="likedProducts" cardinality="many" collectiontype="set">
+				<modifiers read="true" write="true" search="true" optional="true"/>
+			</sourceElement>
+			<targetElement type="Product" qualifier="likedByCustomers" cardinality="many" collectiontype="set">
+				<modifiers read="true" write="true" search="true" optional="true"/>
+			</targetElement>
+		</relation>
+	</relations>
 	<itemtypes>
 	</itemtypes>
 </items>

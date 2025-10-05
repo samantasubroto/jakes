@@ -1,0 +1,5 @@
+export enum JAKES_ICON_TYPE {
+  SIGNOUT = 'SIGNOUT',
+  LIKE = 'LIKE',
+  UNLIKE = 'UNLIKE'
+}
