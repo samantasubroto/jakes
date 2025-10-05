@@ -89,6 +89,7 @@ INSERT_UPDATE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;pa
 ;PaymentDetailsNavNode;;Payment Details;MyAccountNavNode;;PaymentDetailsNavNode
 ;UpdatePasswordNavNode;;Update Password;MyAccountNavNode;;UpdatePasswordNavNode
 ;OrderHistoryNavNode;;Order History;MyAccountNavNode;;OrderHistoryNavNode
+;QuickOrderNavNode;;Quick Order;MyAccountNavNode;;QuickOrderNavNode
 ;AddressBookNavNode;;Address Book;MyAccountNavNode;;AddressBookNavNode
 ## entries of the above navigation nodes ##
 INSERT_UPDATE CMSNavigationEntry;uid[unique=true];$contentCV[unique=true];name;navigationNode(&nodeRef);item(&linkRef);
@@ -98,6 +99,8 @@ INSERT_UPDATE CMSNavigationEntry;uid[unique=true];$contentCV[unique=true];name;n
 ;AddressBookNavNodeEntry;;AddressBookNavNodeEntry;AddressBookNavNode;AddressBookLink;
 ;PaymentDetailsNavNodeEntry;;PaymentDetailsNavNodeEntry;PaymentDetailsNavNode;PaymentDetailsLink;
 ;OrderHistoryNavNodeEntry;;OrderHistoryNavNodeEntry;OrderHistoryNavNode;OrderHistoryLink;
+;QuickOrderNavNodeEntry;;QuickOrderNavNodeEntry;QuickOrderNavNode;QuickOrderLink
+
 ## links of the above navigattion entries ##
 INSERT_UPDATE CMSLinkComponent;$contentCV[unique=true];uid[unique=true];name;url;&linkRef;target(code)[default='sameWindow']
 ;;PersonalDetailsLink;PersonalDetailsLink;/my-account/update-profile;PersonalDetailsLink;
@@ -106,6 +109,7 @@ INSERT_UPDATE CMSLinkComponent;$contentCV[unique=true];uid[unique=true];name;url
 ;;AddressBookLink;AddressBookLink;/my-account/address-book;AddressBookLink;
 ;;PaymentDetailsLink;PaymentDetailsLink;/my-account/payment-details;PaymentDetailsLink;
 ;;OrderHistoryLink;OrderHistoryLink;/my-account/orders;OrderHistoryLink;
+;;QuickOrderLink;QuickOrderLink;/my-account/quick-order;QuickOrderLink
 
 ##---- level 4. children of Category Nav ----##
 INSERT_UPDATE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;parent(uid, $contentCV);links(&linkRef);&nodeRef
@@ -618,7 +622,7 @@ INSERT_UPDATE CMSFlexComponent;$contentCV[unique=true];uid[unique=true];name;fle
 ###### Checkout Spa End ######
 
 
-###### FAQ Page Start ###### 
+###### FAQ Page Start ######
 INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='faq'];contentSlot(uid,$contentCV)[unique=true];;;
 ;;Section2A-FAQ;Section2A;;Section2ASlot-FAQ;;;
 ;;Section2B-FAQ;Section2B;;Section2BSlot-FAQ;;;
@@ -957,3 +961,13 @@ INSERT_UPDATE CMSFlexComponent;$contentCV[unique=true];uid[unique=true];name;fle
 
 INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid, $contentCV)
 ;;ProductSummarySlot;ProductImagesComponent,ProductIntroComponent,ProductSummaryComponent,FutureStockComponent,VariantSelector,BulkPricingTableComponent,AddToCart
+
+#SetUp for Quick Order
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef)
+;;BodyContentSlot-quickOrder;Body Content Slot for Quick Order;true;QuickOrderComponent
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true];contentSlot(uid,$contentCV)[unique=true]
+;;BodyContent-quickOrder;BodyContent;quick-order;BodyContentSlot-quickOrder
+
+INSERT_UPDATE CMSFlexComponent;$contentCV[unique=true];uid[unique=true];name;flexType;&componentRef
+;;QuickOrderComponent;Quick Order Component;QuickOrderComponent;QuickOrderComponent
