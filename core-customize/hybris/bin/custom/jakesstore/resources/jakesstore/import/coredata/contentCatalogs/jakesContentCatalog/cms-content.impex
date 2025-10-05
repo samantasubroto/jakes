@@ -977,6 +977,7 @@ INSERT_UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];name;masterTe
 ;;profile;Profile Page;AccountPageTemplate;profile
 ;;address-book;Address Book Page;AccountPageTemplate;/my-account/address-book
 ;;payment-details;Payment Details Page;AccountPageTemplate;/my-account/payment-details
+;;quick-order;Quick Order Page;AccountPageTemplate;/my-account/quick-order
 ;;order;Order Details Page;AccountPageTemplate;/my-account/order
 ;;orders;Order History Page;AccountPageTemplate;/my-account/orders
 ;;checkout-login;Checkout-Login Page;CheckoutLoginPageTemplate;checkout-login
