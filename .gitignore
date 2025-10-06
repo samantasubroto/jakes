@@ -88,3 +88,9 @@ beans.xsd
 items.xsd
 classes/
 eclipsebin/
+
+# Angular cache
+.angular/cache/
+
+# Angular Webpack cache packs
+.angular/cache/**/*.pack

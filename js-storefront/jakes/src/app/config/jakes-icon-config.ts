@@ -4,8 +4,8 @@ export const jakesIconConfig: IconConfig = {
   icon: {
     symbols: {
       SIGNOUT: 'fas fa-sign-out-alt',
-      LIKE: 'fa fa-heart',
-      UNLIKE: 'fa fa-heart-o',      
+      LIKE: 'fas fa-heart',
+      UNLIKE: 'far fa-heart',      
     }
   }
 }

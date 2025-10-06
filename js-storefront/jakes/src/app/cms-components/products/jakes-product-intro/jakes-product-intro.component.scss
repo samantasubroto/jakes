@@ -1,0 +1,45 @@
+.fav {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  transition: transform 0.2s ease;
+}
+
+.fav:hover {
+  transform: scale(1.1);
+}
+
+.fav:active {
+  transform: scale(0.95);
+}
+
+/* Unliked state - red outline */
+.fav:not(.liked) cx-icon {
+  color: #dc3545;
+  font-size: 24px;
+}
+
+/* Liked state - filled red */
+.fav.liked cx-icon {
+  color: #dc3545;
+  font-size: 24px;
+}
+
+/* Optional: Add animation when toggling */
+.fav.liked {
+  animation: heartBeat 0.3s ease;
+}
+
+@keyframes heartBeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
