@@ -1,14 +1,11 @@
 <ng-container *ngIf="product$ | async as product">
-  <div class="product-summary">
-    <!-- LIKE BUTTON -->
-    <div class="fav" (click)="toggleLike(product)" [class.liked]="product?.liked">
-      <cx-icon
-        [type]="iconTypes.UNLIKE"
-        class="like-icon"
-      ></cx-icon>
-    </div>
+  <!-- LIKE BUTTON -->
+  <div class="fav" (click)="toggleLike(product)" [class.liked]="product?.liked">
+    <cx-icon [type]="product?.liked ? iconTypes.LIKE : iconTypes.UNLIKE"></cx-icon>
+  </div>
 
-    <!-- PRODUCT CODE -->
+  <!-- PRODUCT SUMMARY -->
+  <div class="product-summary">
     <div class="code">
       {{ 'productSummary.id' | cxTranslate }} {{ product?.code }}
     </div>
